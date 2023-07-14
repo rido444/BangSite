@@ -33,7 +33,7 @@ const Footer = ({ fullWidth }) => {
       name: t.NAV.ABOUT,
       to: BLOG.path || '/about',
       icon: <UserIcon className='inline-block mb-1 h-5 w-5' />,
-      show: true
+      show: false
     },
     {
       id: 1,
@@ -47,14 +47,14 @@ const Footer = ({ fullWidth }) => {
       name: t.NAV.BOOKS,
       to: '/books',
       icon: <BookOpenIcon className='inline-block mb-1 h-5 w-5' />,
-      show: BLOG.pagesShow.books
+      show: false
     },
     {
       id: 3,
       name: t.NAV.CONTACT,
       to: '/contact',
       icon: <MailIcon className='inline-block mb-1 h-5 w-5' />,
-      show: BLOG.pagesShow.contact
+      show: false
     }
   ]
 
@@ -66,33 +66,15 @@ const Footer = ({ fullWidth }) => {
     >
       <footer className='max-w-screen-2xl px-4 md:px-8 mx-auto'>
         <div className='flex flex-col md:flex-row justify-between items-center border-b dark:border-gray-600 py-1'>
-          <ul className='flex flex-wrap justify-center md:justify-start md:gap-1'>
-            {links.map(
-              (link) =>
-                link.show && (
-                  <Link passHref key={link.id} href={link.to} scroll={false}>
-                    <li key={link.id}
-                      className={`${
-                        activeMenu === link.to
-                          ? 'bg-gray-200 dark:bg-gray-700'
-                          : ''
-                      } hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer rounded-lg block py-1 px-2 nav`}
-                    >
-                      <div className='font-light'>
-                        {link.icon}
-                        <span className='inline-block m-1'>{link.name}</span>
-                      </div>
-                    </li>
-                  </Link>
-                )
-            )}
-          </ul>
-          <div className='hidden md:flex'>
+          <div className='md:hidden flex mb-2'>
+            <Social />
+          </div>
+          <div className='hidden md:flex md:my-2'>
             <Social />
           </div>
         </div>
 
-        <div className='text-gray-400 text-xs font-light py-4'>
+        <div className='text-gray-400 text-xs font-light py-4 text-center md:text-left'>
           © {from === y || !from ? y : `${from} - ${y}`} | {BLOG.author}
           <p className='md:float-right'>
             {t.FOOTER.COPYRIGHT_START}
