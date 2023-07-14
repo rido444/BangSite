@@ -162,7 +162,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
                 !showTitle ? '' : ''
               }`}
             >
-              {BLOG.title} ~ {' '}
+              {BLOG.title} • {' '}
               <span className='font-normal'>{BLOG.description}</span>
             </p>
           )}
